@@ -1,0 +1,576 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EcoBotTerra | Robótica Ambiental</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <div class="brand">
+    <img src="logo.png" alt="Logo EcoBotTerra">
+    <div class="brand-name">EcoBotTerra</div>
+  </div>
+
+  <nav>
+    <button onclick="showHome()">Inicio</button>
+    <button onclick="showSection('robots')">Robots</button>
+    <button onclick="showSection('environment')">Medioambiente</button>
+    <button onclick="showSection('quiz')">EcoQuiz</button>
+    <button onclick="showSection('statistics')">
+  Robótica en cifras
+</button>
+  </nav>
+</header>
+
+<main id="home">
+
+<section class="hero">
+  <div>
+    <p class="tag">ROBOTICS // ENVIRONMENT // FUTURE</p>
+
+    <h1>
+      EL FUTURO<br>
+      ES <span>SOSTENIBLE.</span>
+    </h1>
+
+    <p class="description">
+      Descubre cómo la robótica contribuye al cuidado
+      del medioambiente. Explora robots reales,
+      conoce sus aplicaciones y aprende cómo
+      podemos construir un planeta mejor.
+    </p>
+
+    <button class="main-button"
+      onclick="showSection('robots')">
+      INICIAR EXPLORACIÓN →
+    </button>
+  </div>
+
+  <div class="hero-logo">
+    <img src="logo.png" alt="EcoBotTerra">
+  </div>
+</section>
+
+</main>
+
+<section id="content"></section>
+
+<footer>
+  <p><span>EcoBotTerra</span> | Robótica para un planeta mejor</p>
+  <p style="margin-top:8px">
+    Proyecto educativo sobre robótica ambiental
+  </p>
+</footer>
+
+<script>
+const pages = {
+
+robots: {
+  title: "ROBOTS DEL MUNDO REAL",
+  text: "Conoce ejemplos de tecnologías robóticas que contribuyen al cuidado ambiental."
+},
+
+environment: {
+  title: "ROBÓTICA Y MEDIOAMBIENTE",
+  text: "La robótica ambiental es una aplicación de la tecnología que busca apoyar la protección de la naturaleza y la gestión de los recursos. Mediante sensores, cámaras, sistemas de navegación y mecanismos automatizados, los robots pueden realizar tareas como recoger residuos, monitorear ecosistemas, clasificar materiales reciclables y apoyar la agricultura sostenible. Estas tecnologías pueden contribuir a detectar problemas ambientales y mejorar algunos procesos de conservación. Sin embargo, también presentan desafíos: su fabricación requiere materias primas, sus componentes electrónicos pueden generar residuos y su funcionamiento consume energía. Por esta razón, es importante evaluar tanto sus beneficios como sus limitaciones y utilizar estas herramientas de manera responsable."
+},
+
+recycling: {
+  title: "ROBOTS RECICLADORES",
+  text: "Los robots de clasificación de residuos utilizan mecanismos y sensores para separar materiales. Pueden facilitar procesos de reciclaje y apoyar la gestión de residuos."
+},
+
+cleaning: {
+  title: "ROBOTS LIMPIADORES",
+  text: "Algunos robots acuáticos ayudan a recoger residuos flotantes. Otros proyectos utilizan sistemas autónomos para detectar y recoger basura marina."
+},
+
+agriculture: {
+  title: "ROBÓTICA AGRÍCOLA",
+  text: "Los robots agrícolas pueden monitorear cultivos, apoyar el riego preciso y realizar tareas automatizadas. Estas aplicaciones pueden ayudar a utilizar recursos de manera eficiente."
+}
+};
+
+
+const robots = [
+{
+  name: "WasteShark",
+  icon: "🌊",
+  image: "Images/wasteshark.jpg",
+  sourceName: "RanMarine Technologies",
+sourceUrl: "https://www.ranmarine.io/wastesharkclassic/",
+  category: "Robot acuático",
+
+  description: "WasteShark es un robot acuático autónomo o controlado a distancia, desarrollado para recoger residuos que flotan en la superficie del agua. Su diseño permite desplazarse por espacios como puertos, canales y zonas costeras, donde puede recoger plásticos, envolturas y otros desechos mediante un sistema de recolección integrado. Funciona como una herramienta de apoyo para las labores de limpieza de ambientes acuáticos.",
+
+  benefit: "Su principal beneficio ambiental es la reducción de residuos flotantes en el agua. Al retirar parte de estos desechos, puede ayudar a disminuir la contaminación de ecosistemas acuáticos y el riesgo de que ciertos residuos lleguen a zonas más amplias. Sin embargo, no sustituye la prevención de la contaminación ni la gestión adecuada de los residuos."
+},
+{
+  name: "SeaClear",
+  icon: "🤿",
+  image: "Images/seaclear.jpg",
+  sourceName: "Comisión Europea - CORDIS",
+sourceUrl: "https://cordis.europa.eu/project/id/871295/es",
+  category: "Sistema robótico marino",
+
+  description: "SeaClear es un proyecto de robótica marina que utiliza diferentes tecnologías autónomas para localizar y recoger basura del fondo del mar. El sistema combina vehículos submarinos, robots y otras herramientas de detección para identificar residuos en ambientes marinos. Sus tecnologías permiten explorar áreas submarinas y apoyar la identificación de objetos que pueden ser difíciles de localizar mediante métodos tradicionales.",
+
+  benefit: "Contribuye al desarrollo de métodos tecnológicos para la limpieza de fondos marinos. La detección y recolección de residuos puede ayudar a reducir la contaminación submarina y aportar información sobre la presencia de basura en los ecosistemas. Su uso también permite investigar alternativas de limpieza que reduzcan la necesidad de intervención humana directa en determinadas zonas."
+},
+{
+  name: "Robots clasificadores",
+  icon: "♻️",
+  image: "Images/clasificador.jpg",
+  sourceName: "Fundación Ellen MacArthur",
+sourceUrl: "https://www.ellenmacarthurfoundation.org/es/ejemplos-circulares/inteligencia-artificial-para-el-reciclaje-amp-robotics",
+  category: "Robótica de reciclaje",
+
+  description: "Los robots clasificadores se utilizan en instalaciones de tratamiento de residuos para identificar y separar materiales como plástico, papel, cartón y metales. Algunos sistemas emplean cámaras, sensores y algoritmos de inteligencia artificial para reconocer los objetos que pasan por una banda transportadora. Después, mecanismos automatizados realizan la separación de los materiales según sus características.",
+
+  benefit: "Estos sistemas pueden aumentar la eficiencia de la clasificación de residuos y facilitar el aprovechamiento de materiales reciclables. También pueden reducir ciertos errores de separación y apoyar el trabajo de las instalaciones de reciclaje. Su impacto depende de la precisión del sistema, el consumo energético y la correcta gestión de los materiales recuperados."
+},
+{
+  name: "Robots agrícolas",
+  icon: "🌱",
+  image: "Images/agricola.jpg",
+  sourceName: "Naïo Technologies",
+sourceUrl: "https://www.naio-technologies.com/en/about-naio-technologies/",
+  category: "Robótica agrícola",
+
+  description: "Los robots agrícolas son máquinas diseñadas para realizar diferentes actividades en los cultivos, como monitorear las plantas, identificar malezas, revisar las condiciones del suelo y apoyar tareas de mantenimiento. Algunos utilizan cámaras, sensores y sistemas de navegación para desplazarse por los terrenos y reconocer las necesidades de los cultivos. Existen tecnologías que permiten realizar intervenciones precisas en zonas específicas.",
+
+  benefit: "La robótica agrícola puede contribuir al cuidado ambiental mediante un uso más eficiente de recursos como el agua y ciertos productos agrícolas. La aplicación localizada de tratamientos y el monitoreo de los cultivos pueden ayudar a reducir desperdicios. No obstante, sus resultados dependen del tipo de robot, el cultivo y las condiciones de funcionamiento."
+}
+];
+
+
+function showHome() {
+  document.getElementById("home").style.display = "block";
+  document.getElementById("content").style.display = "none";
+  window.scrollTo(0, 0);
+}
+
+
+function showSection(section) {
+  document.getElementById("home").style.display = "none";
+
+  const content = document.getElementById("content");
+  content.style.display = "block";
+
+  if (section === "robots") {
+    content.innerHTML = `
+      <h2>${pages.robots.title}</h2>
+      <p>${pages.robots.text}</p>
+
+      <div class="cards">
+        ${robots.map((robot, index) => `
+          <div class="card">
+            <img
+              src="${robot.image}"
+              alt="${robot.name}"
+              class="robot-image"
+            >
+
+            <div class="card-icon">${robot.icon}</div>
+
+            <h3>${robot.name}</h3>
+            <p>${robot.category}</p>
+
+            <button onclick="showRobot(${index})">
+              CONOCER MÁS →
+            </button>
+          </div>
+        `).join("")}
+      </div>
+
+      <button class="back-button" onclick="showHome()">
+        ← VOLVER AL INICIO
+      </button>
+    `;
+  }
+
+  else if (section === "environment") {
+    content.innerHTML = `
+      <h2>${pages.environment.title}</h2>
+      <p>${pages.environment.text}</p>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-icon">♻️</div>
+          <h3>GESTIÓN DE RESIDUOS</h3>
+          <p>
+            La robótica permite automatizar la clasificación
+            de materiales y apoyar los procesos de reciclaje.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🌊</div>
+          <h3>ECOSISTEMAS ACUÁTICOS</h3>
+          <p>
+            Los robots acuáticos pueden recoger residuos
+            flotantes y ayudar a monitorear ambientes marinos.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🌱</div>
+          <h3>AGRICULTURA SOSTENIBLE</h3>
+          <p>
+            Los sistemas robóticos pueden monitorear cultivos
+            y apoyar el uso eficiente de agua y recursos.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>DESAFÍOS TECNOLÓGICOS</h3>
+          <p>
+            La fabricación y el funcionamiento de robots
+            requieren energía y materiales. Su impacto
+            ambiental también debe ser evaluado.
+          </p>
+        </div>
+
+      </div>
+
+      <button class="back-button" onclick="showHome()">
+        ← VOLVER AL INICIO
+      </button>
+    `;
+  }
+
+  
+  else if (section === "statistics") {
+    content.innerHTML = `
+      <h2>ROBÓTICA EN CIFRAS</h2>
+
+      <p>
+        Una comparación de la presencia de robots industriales
+        en Colombia y en el mundo.
+      </p>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-icon"></div>
+
+          <h3>EL MUNDO</h3>
+
+          <h2>5.079.000</h2>
+
+          <p>
+            Robots industriales en funcionamiento
+            a nivel mundial al cierre de 2025.
+          </p>
+
+          <p>
+            Fuente: Federación Internacional de Robótica (IFR).
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon"></div>
+
+          <h3>COLOMBIA</h3>
+
+          <h2>Sin cifra pública</h2>
+
+          <p>
+            No se dispone de un total nacional público
+            y comparable de robots industriales en operación.
+          </p>
+
+          <p>
+            La ausencia de una cifra publicada no significa
+            que Colombia no tenga robots.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="robot-info">
+
+        <h3>¿Qué significa esta comparación?</h3>
+
+        <p>
+          La robótica industrial tiene una presencia importante
+          en la producción mundial. Sin embargo, para Colombia
+          existe una limitación en la disponibilidad de
+          estadísticas públicas comparables.
+        </p>
+
+        <h3>¿Por qué no mostramos un porcentaje?</h3>
+
+        <p>
+          Para calcular qué porcentaje representa Colombia
+          frente al mundo, necesitamos una cifra nacional
+          verificable. Como no contamos con ella, mostrar
+          un porcentaje sería impreciso.
+        </p>
+
+        <h3>Fuente de información</h3>
+
+        <p>
+          Federación Internacional de Robótica (IFR),
+          World Robotics.
+        </p>
+
+      </div>
+
+      <button class="back-button" onclick="showHome()">
+        ← VOLVER AL INICIO
+      </button>
+    `;
+  }
+
+
+  else if (section === "quiz") {
+    startQuiz();
+    return;
+  }
+
+  else {
+    const page = pages[section];
+
+    content.innerHTML = `
+      <h2>${page.title}</h2>
+      <p>${page.text}</p>
+
+      <button class="back-button" onclick="showHome()">
+        ← VOLVER AL INICIO
+      </button>
+    `;
+  }
+
+  window.scrollTo(0, 0);
+}
+
+
+function showRobot(index) {
+  const robot = robots[index];
+  const content = document.getElementById("content");
+
+  content.innerHTML = `
+    <div class="robot-detail">
+
+      <h2>${robot.icon} ${robot.name}</h2>
+
+      <img
+        src="${robot.image}"
+        alt="${robot.name}"
+        class="robot-detail-image"
+      >
+
+      <div class="robot-info">
+        <h3>${robot.category}</h3>
+        <p>${robot.description}</p>
+
+        <h3>Beneficio ambiental</h3>
+        <p>${robot.benefit}</p>
+
+        <h3>Fuente de información</h3>
+        <p>
+          <a
+            href="${robot.sourceUrl}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Consultar: ${robot.sourceName} ↗
+          </a>
+        </p>
+      </div>
+
+      <button class="back-button"
+        onclick="showSection('robots')">
+        ← VOLVER A LOS ROBOTS
+      </button>
+
+    </div>
+  `;
+
+  window.scrollTo(0, 0);
+}
+
+
+
+const questions = [
+{
+  question: "¿Cuál es una función de los robots recicladores?",
+  options: [
+    "Separar y clasificar residuos",
+    "Producir basura",
+    "Contaminar los ríos"
+  ],
+  answer: 0
+},
+{
+  question: "¿Qué tipo de ambiente puede ayudar a limpiar WasteShark?",
+  options: [
+    "Desiertos",
+    "Superficies acuáticas",
+    "Montañas nevadas"
+  ],
+  answer: 1
+},
+{
+  question: "¿Qué pueden hacer algunos robots agrícolas?",
+  options: [
+    "Monitorear cultivos",
+    "Crear océanos",
+    "Eliminar todos los ecosistemas"
+  ],
+  answer: 0
+},
+{
+  question: "¿Cuál es un posible beneficio de la robótica ambiental?",
+  options: [
+    "Aumentar la contaminación siempre",
+    "Apoyar procesos de gestión ambiental",
+    "Eliminar la necesidad de cuidar el planeta"
+  ],
+  answer: 1
+},
+{
+  question: "¿Los robots también pueden generar impactos ambientales?",
+  options: [
+    "No, nunca",
+    "Sí, por sus materiales y consumo energético",
+    "Solo los robots acuáticos"
+  ],
+  answer: 1
+}
+];
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+function startQuiz() {
+  currentQuestion = 0;
+  score = 0;
+  answered = false;
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const content = document.getElementById("content");
+  const q = questions[currentQuestion];
+
+  content.innerHTML = `
+    <h2>🎮 ECOQUIZ</h2>
+
+    <p>
+      Pregunta ${currentQuestion + 1}
+      de ${questions.length}
+    </p>
+
+    <div class="robot-info">
+      <h3>${q.question}</h3>
+
+      ${q.options.map((option, index) => `
+        <button class="quiz-option"
+          onclick="checkAnswer(${index})">
+          ${String.fromCharCode(65 + index)}.
+          ${option}
+        </button>
+      `).join("")}
+
+      <div id="quiz-result"></div>
+
+      <button id="next-button"
+        class="main-button"
+        style="display:none;margin-top:20px"
+        onclick="nextQuestion()">
+        SIGUIENTE →
+      </button>
+    </div>
+
+    <button class="back-button" onclick="showHome()">
+      ← VOLVER AL INICIO
+    </button>
+  `;
+
+  window.scrollTo(0, 0);
+}
+
+function checkAnswer(selected) {
+  if (answered) return;
+
+  answered = true;
+
+  const q = questions[currentQuestion];
+  const result = document.getElementById("quiz-result");
+
+  if (selected === q.answer) {
+    score++;
+    result.innerHTML = "✓ ¡Correcto! Excelente respuesta.";
+  } else {
+    result.innerHTML =
+      "✗ Respuesta incorrecta. La respuesta correcta es: " +
+      q.options[q.answer];
+  }
+
+  document.getElementById("next-button").style.display = "inline-block";
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  answered = false;
+
+  if (currentQuestion < questions.length) {
+    renderQuestion();
+  } else {
+    showResults();
+  }
+}
+
+function showResults() {
+  const content = document.getElementById("content");
+
+  let message = "";
+
+  if (score === questions.length) {
+    message = "¡Excelente! Dominas la robótica ambiental.";
+  } else if (score >= 3) {
+    message = "¡Muy bien! Continúa aprendiendo.";
+  } else {
+    message = "Sigue explorando EcoBotTerra para aprender más.";
+  }
+
+  content.innerHTML = `
+    <h2>🏆 RESULTADOS ECOQUIZ</h2>
+
+    <div class="robot-info">
+      <h3>Tu puntuación:</h3>
+      <p style="font-size:35px;color:#39ff14">
+        ${score} / ${questions.length}
+      </p>
+      <p>${message}</p>
+    </div>
+
+    <button class="main-button"
+      onclick="startQuiz()">
+      VOLVER A JUGAR
+    </button>
+
+    <button class="back-button"
+      onclick="showHome()">
+      ← VOLVER AL INICIO
+    </button>
+  `;
+
+  window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
