@@ -23,8 +23,9 @@
     <button onclick="showSection('robots')">Robots</button>
     <button onclick="showSection('environment')">Medioambiente</button>
     <button onclick="showSection('quiz')">EcoQuiz</button>
-    <button onclick="showSection('statistics')">
-  Robótica en cifras
+    <button onclick="showSection('statistics')">Robótica en cifras</button>
+    <button onclick="showSection('future')">Futuro ambiental</button>
+</nav>
 </button>
   </nav>
 </header>
@@ -110,7 +111,8 @@ sourceUrl: "https://www.ranmarine.io/wastesharkclassic/",
 
   description: "WasteShark es un robot acuático autónomo o controlado a distancia, desarrollado para recoger residuos que flotan en la superficie del agua. Su diseño permite desplazarse por espacios como puertos, canales y zonas costeras, donde puede recoger plásticos, envolturas y otros desechos mediante un sistema de recolección integrado. Funciona como una herramienta de apoyo para las labores de limpieza de ambientes acuáticos.",
 
-  benefit: "Su principal beneficio ambiental es la reducción de residuos flotantes en el agua. Al retirar parte de estos desechos, puede ayudar a disminuir la contaminación de ecosistemas acuáticos y el riesgo de que ciertos residuos lleguen a zonas más amplias. Sin embargo, no sustituye la prevención de la contaminación ni la gestión adecuada de los residuos."
+  benefit: "Su principal beneficio ambiental es la reducción de residuos flotantes en el agua. Al retirar parte de estos desechos, puede ayudar a disminuir la contaminación de ecosistemas acuáticos y el riesgo de que ciertos residuos lleguen a zonas más amplias. Sin embargo, no sustituye la prevención de la contaminación ni la gestión adecuada de los residuos.",
+  limitations: "Recoge principalmente residuos que flotan en la superficie. No puede eliminar toda la contaminación del agua ni recoger fácilmente residuos sumergidos.",
 },
 {
   name: "SeaClear",
@@ -122,7 +124,8 @@ sourceUrl: "https://cordis.europa.eu/project/id/871295/es",
 
   description: "SeaClear es un proyecto de robótica marina que utiliza diferentes tecnologías autónomas para localizar y recoger basura del fondo del mar. El sistema combina vehículos submarinos, robots y otras herramientas de detección para identificar residuos en ambientes marinos. Sus tecnologías permiten explorar áreas submarinas y apoyar la identificación de objetos que pueden ser difíciles de localizar mediante métodos tradicionales.",
 
-  benefit: "Contribuye al desarrollo de métodos tecnológicos para la limpieza de fondos marinos. La detección y recolección de residuos puede ayudar a reducir la contaminación submarina y aportar información sobre la presencia de basura en los ecosistemas. Su uso también permite investigar alternativas de limpieza que reduzcan la necesidad de intervención humana directa en determinadas zonas."
+  benefit: "Contribuye al desarrollo de métodos tecnológicos para la limpieza de fondos marinos. La detección y recolección de residuos puede ayudar a reducir la contaminación submarina y aportar información sobre la presencia de basura en los ecosistemas. Su uso también permite investigar alternativas de limpieza que reduzcan la necesidad de intervención humana directa en determinadas zonas.",
+  limitations: "Su funcionamiento depende de las condiciones del agua, la visibilidad y la complejidad del fondo marino.",
 },
 {
   name: "Robots clasificadores",
@@ -134,7 +137,8 @@ sourceUrl: "https://www.ellenmacarthurfoundation.org/es/ejemplos-circulares/inte
 
   description: "Los robots clasificadores se utilizan en instalaciones de tratamiento de residuos para identificar y separar materiales como plástico, papel, cartón y metales. Algunos sistemas emplean cámaras, sensores y algoritmos de inteligencia artificial para reconocer los objetos que pasan por una banda transportadora. Después, mecanismos automatizados realizan la separación de los materiales según sus características.",
 
-  benefit: "Estos sistemas pueden aumentar la eficiencia de la clasificación de residuos y facilitar el aprovechamiento de materiales reciclables. También pueden reducir ciertos errores de separación y apoyar el trabajo de las instalaciones de reciclaje. Su impacto depende de la precisión del sistema, el consumo energético y la correcta gestión de los materiales recuperados."
+  benefit: "Estos sistemas pueden aumentar la eficiencia de la clasificación de residuos y facilitar el aprovechamiento de materiales reciclables. También pueden reducir ciertos errores de separación y apoyar el trabajo de las instalaciones de reciclaje. Su impacto depende de la precisión del sistema, el consumo energético y la correcta gestión de los materiales recuperados.",
+  limitations: "Pueden tener dificultades para reconocer materiales sucios, mezclados o difíciles de identificar. Además, requieren mantenimiento y energía.",
 },
 {
   name: "Robots agrícolas",
@@ -146,7 +150,8 @@ sourceUrl: "https://www.naio-technologies.com/en/about-naio-technologies/",
 
   description: "Los robots agrícolas son máquinas diseñadas para realizar diferentes actividades en los cultivos, como monitorear las plantas, identificar malezas, revisar las condiciones del suelo y apoyar tareas de mantenimiento. Algunos utilizan cámaras, sensores y sistemas de navegación para desplazarse por los terrenos y reconocer las necesidades de los cultivos. Existen tecnologías que permiten realizar intervenciones precisas en zonas específicas.",
 
-  benefit: "La robótica agrícola puede contribuir al cuidado ambiental mediante un uso más eficiente de recursos como el agua y ciertos productos agrícolas. La aplicación localizada de tratamientos y el monitoreo de los cultivos pueden ayudar a reducir desperdicios. No obstante, sus resultados dependen del tipo de robot, el cultivo y las condiciones de funcionamiento."
+  benefit: "La robótica agrícola puede contribuir al cuidado ambiental mediante un uso más eficiente de recursos como el agua y ciertos productos agrícolas. La aplicación localizada de tratamientos y el monitoreo de los cultivos pueden ayudar a reducir desperdicios. No obstante, sus resultados dependen del tipo de robot, el cultivo y las condiciones de funcionamiento.",
+  limitations: "Su implementación puede ser costosa y requiere mantenimiento. También deben adaptarse al terreno y al tipo de cultivo.",
 }
 ];
 
@@ -156,6 +161,8 @@ function showHome() {
   document.getElementById("content").style.display = "none";
   window.scrollTo(0, 0);
 }
+
+
 
 
 function showSection(section) {
@@ -248,81 +255,248 @@ function showSection(section) {
     `;
   }
 
+  else if (section === "future") {
+  content.innerHTML = `
+    <div class="future-header">
+      <span>TECNOLOGÍA Y SOSTENIBILIDAD</span>
+      <h2>EL FUTURO DE LA ROBÓTICA AMBIENTAL</h2>
+      <p>
+        La robótica y la inteligencia artificial pueden convertirse
+        en herramientas importantes para proteger los ecosistemas
+        y enfrentar los problemas ambientales.
+      </p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-icon"></div>
+        <h3>ROBOTS MÁS AUTÓNOMOS</h3>
+        <p>
+          Los avances en inteligencia artificial y sensores
+          permitirán que los robots identifiquen problemas
+          ambientales y realicen tareas con mayor precisión.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon"></div>
+        <h3>PROTECCIÓN DE LOS OCÉANOS</h3>
+        <p>
+          Los sistemas robóticos podrán mejorar la detección
+          de residuos marinos, estudiar ecosistemas acuáticos
+          y monitorear las condiciones del agua.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon"></div>
+        <h3>AGRICULTURA INTELIGENTE</h3>
+        <p>
+          Los robots agrícolas podrán monitorear cultivos,
+          detectar problemas y contribuir al uso eficiente
+          del agua y otros recursos.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon"></div>
+        <h3>RESTAURACIÓN DE ECOSISTEMAS</h3>
+        <p>
+          La robótica podrá apoyar la reforestación,
+          el seguimiento de especies y la recuperación
+          de zonas afectadas por la contaminación.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon"></div>
+        <h3>DESAFÍOS DEL FUTURO</h3>
+        <p>
+          Los costos, el consumo de energía, el mantenimiento
+          y los materiales de fabricación deberán tenerse
+          en cuenta para evitar nuevos impactos ambientales.
+        </p>
+      </div>
+
+    </div>
+
+    <button class="back-button" onclick="showHome()">
+      ← VOLVER AL INICIO
+    </button>
+  `;
+}
+
   
   else if (section === "statistics") {
     content.innerHTML = `
-      <h2>ROBÓTICA EN CIFRAS</h2>
+      <div class="statistics-header">
+        <span class="statistics-tag">DATOS GLOBALES · 2025</span>
 
-      <p>
-        Una comparación de la presencia de robots industriales
-        en Colombia y en el mundo.
-      </p>
+        <h2>ROBÓTICA EN CIFRAS</h2>
 
-      <div class="cards">
+        <p>
+          La expansión de la robótica industrial en el mundo
+          y su importancia para el desarrollo tecnológico.
+        </p>
+      </div>
 
-        <div class="card">
-          <div class="card-icon"></div>
+      <div class="statistics-grid">
 
-          <h3>EL MUNDO</h3>
+        <div class="statistics-card world-card">
+          <div class="statistics-icon"></div>
 
-          <h2>5.079.000</h2>
+          <span class="statistics-label">
+            ROBOTS EN FUNCIONAMIENTO
+          </span>
+
+          <h2 class="statistics-number">
+            5.079.078
+          </h2>
 
           <p>
-            Robots industriales en funcionamiento
-            a nivel mundial al cierre de 2025.
+            Robots industriales operativos en el mundo
+            al cierre de 2025.
           </p>
 
+          <div class="statistics-visual">
+            <div class="visual-bar">
+              <div class="visual-fill"></div>
+            </div>
+
+            <span>Presencia mundial de la robótica industrial</span>
+          </div>
+        </div>
+
+        <div class="statistics-card installation-card">
+          <div class="statistics-icon"></div>
+
+          <span class="statistics-label">
+            INSTALACIONES NUEVAS
+          </span>
+
+          <h2 class="statistics-number">
+            603.307
+          </h2>
+
           <p>
-            Fuente: Federación Internacional de Robótica (IFR).
+            Nuevos robots industriales instalados
+            durante el año 2025.
+          </p>
+
+          <div class="statistics-visual">
+            <div class="visual-bar">
+              <div class="visual-fill installation-fill"></div>
+            </div>
+
+            <span>Instalaciones realizadas durante 2025</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="statistics-chart">
+
+        <div class="chart-heading">
+          <span class="statistics-tag">
+            PANORAMA TECNOLÓGICO
+          </span>
+
+          <h3>La robótica industrial en el mundo</h3>
+
+          <p>
+            Los robots industriales son utilizados en
+            procesos de fabricación, ensamblaje,
+            soldadura y manipulación de materiales.
           </p>
         </div>
 
-        <div class="card">
-          <div class="card-icon"></div>
+        <div class="chart-visual">
 
-          <h3>COLOMBIA</h3>
+          <div class="chart-column">
+            <div class="chart-column-value">
+              5,07 millones
+            </div>
 
-          <h2>Sin cifra pública</h2>
+            <div class="chart-bar chart-bar-stock">
+              <span>5M</span>
+            </div>
+
+            <p>Robots en funcionamiento</p>
+          </div>
+
+          <div class="chart-column">
+            <div class="chart-column-value">
+              603 mil
+            </div>
+
+            <div class="chart-bar chart-bar-new">
+              <span>603K</span>
+            </div>
+
+            <p>Instalaciones nuevas en 2025</p>
+          </div>
+
+        </div>
+
+        <p class="chart-note">
+          Las cifras representan indicadores diferentes:
+          el total acumulado de robots operativos y
+          las nuevas instalaciones de un solo año.
+          No deben interpretarse como una comparación
+          directa de la misma magnitud.
+        </p>
+
+      </div>
+
+      <div class="statistics-country">
+
+        <div class=""></div>
+
+        <div>
+          <span class="statistics-tag">
+            CONTEXTO NACIONAL
+          </span>
+
+          <h3>¿Y qué ocurre en Colombia?</h3>
 
           <p>
-            No se dispone de un total nacional público
-            y comparable de robots industriales en operación.
+            Colombia utiliza tecnologías robóticas en
+            diferentes sectores productivos. Sin embargo,
+            no disponemos aquí de una cifra nacional
+            verificada y comparable para el total de
+            robots industriales operativos en 2025.
           </p>
 
           <p>
-            La ausencia de una cifra publicada no significa
-            que Colombia no tenga robots.
+            Por esta razón, no se presenta un porcentaje
+            de participación nacional que pudiera
+            resultar impreciso.
           </p>
         </div>
 
       </div>
 
-      <div class="robot-info">
+      <div class="statistics-source">
 
-        <h3>¿Qué significa esta comparación?</h3>
+        <div class="source-icon"></div>
 
-        <p>
-          La robótica industrial tiene una presencia importante
-          en la producción mundial. Sin embargo, para Colombia
-          existe una limitación en la disponibilidad de
-          estadísticas públicas comparables.
-        </p>
+        <div>
+          <h3>Fuente de información</h3>
 
-        <h3>¿Por qué no mostramos un porcentaje?</h3>
+          <p>
+            International Federation of Robotics (IFR).
+            Estadísticas sobre robótica industrial.
+          </p>
 
-        <p>
-          Para calcular qué porcentaje representa Colombia
-          frente al mundo, necesitamos una cifra nacional
-          verificable. Como no contamos con ella, mostrar
-          un porcentaje sería impreciso.
-        </p>
-
-        <h3>Fuente de información</h3>
-
-        <p>
-          Federación Internacional de Robótica (IFR),
-          World Robotics.
-        </p>
+          <a
+            href="https://ifr.org/ifr-press-releases/five-million-robots-now-operate-in-factories-globally"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CONSULTAR INFORME DE LA IFR ↗
+          </a>
+        </div>
 
       </div>
 
@@ -377,6 +551,9 @@ function showRobot(index) {
         <h3>Beneficio ambiental</h3>
         <p>${robot.benefit}</p>
 
+        <h3>Limitaciones y desafíos</h3>
+        <p>${robot.limitations}</p>
+
         <h3>Fuente de información</h3>
         <p>
           <a
@@ -402,6 +579,7 @@ function showRobot(index) {
 
 
 
+
 const questions = [
 {
   question: "¿Cuál es una función de los robots recicladores?",
@@ -410,7 +588,8 @@ const questions = [
     "Producir basura",
     "Contaminar los ríos"
   ],
-  answer: 0
+  answer: 0,
+  explanation: "Los robots recicladores utilizan sensores y sistemas de inteligencia artificial para identificar y clasificar materiales, facilitando su aprovechamiento y reciclaje."
 },
 {
   question: "¿Qué tipo de ambiente puede ayudar a limpiar WasteShark?",
@@ -419,7 +598,8 @@ const questions = [
     "Superficies acuáticas",
     "Montañas nevadas"
   ],
-  answer: 1
+  answer: 1,
+  explanation: "WasteShark es un robot acuático diseñado para recoger residuos flotantes en ambientes como canales, puertos y otras zonas acuáticas."
 },
 {
   question: "¿Qué pueden hacer algunos robots agrícolas?",
@@ -428,7 +608,8 @@ const questions = [
     "Crear océanos",
     "Eliminar todos los ecosistemas"
   ],
-  answer: 0
+  answer: 0,
+  explanation: "Los robots agrícolas pueden monitorear el estado de los cultivos, detectar problemas y ayudar a utilizar recursos como el agua de manera más eficiente."
 },
 {
   question: "¿Cuál es un posible beneficio de la robótica ambiental?",
@@ -437,7 +618,8 @@ const questions = [
     "Apoyar procesos de gestión ambiental",
     "Eliminar la necesidad de cuidar el planeta"
   ],
-  answer: 1
+  answer: 1,
+  explanation: "La robótica ambiental puede apoyar el reciclaje, la limpieza de ecosistemas y el monitoreo de recursos naturales. Sin embargo, no reemplaza la responsabilidad humana."
 },
 {
   question: "¿Los robots también pueden generar impactos ambientales?",
@@ -446,9 +628,11 @@ const questions = [
     "Sí, por sus materiales y consumo energético",
     "Solo los robots acuáticos"
   ],
-  answer: 1
+  answer: 1,
+  explanation: "La fabricación de robots requiere materiales y energía. Además, su funcionamiento y disposición al final de su vida útil pueden generar impactos ambientales."
 }
 ];
+
 
 let currentQuestion = 0;
 let score = 0;
@@ -502,6 +686,7 @@ function renderQuestion() {
   window.scrollTo(0, 0);
 }
 
+
 function checkAnswer(selected) {
   if (answered) return;
 
@@ -510,17 +695,50 @@ function checkAnswer(selected) {
   const q = questions[currentQuestion];
   const result = document.getElementById("quiz-result");
 
+  const buttons = document.querySelectorAll(".quiz-option");
+
+  buttons.forEach((button, index) => {
+    button.disabled = true;
+
+    if (index === q.answer) {
+      button.style.border = "2px solid #00ff00";
+      button.style.color = "#00ff00";
+    }
+
+    if (index === selected && selected !== q.answer) {
+      button.style.border = "2px solid #ff4444";
+      button.style.color = "#ff4444";
+    }
+  });
+
   if (selected === q.answer) {
     score++;
-    result.innerHTML = "✓ ¡Correcto! Excelente respuesta.";
+
+    result.innerHTML = `
+      <div class="quiz-feedback correct">
+        <h3>✓ ¡Respuesta correcta!</h3>
+        <p>${q.explanation}</p>
+      </div>
+    `;
   } else {
-    result.innerHTML =
-      "✗ Respuesta incorrecta. La respuesta correcta es: " +
-      q.options[q.answer];
+    result.innerHTML = `
+      <div class="quiz-feedback incorrect">
+        <h3>✗ Respuesta incorrecta</h3>
+
+        <p>
+          <strong>Respuesta correcta:</strong>
+          ${q.options[q.answer]}
+        </p>
+
+        <p>${q.explanation}</p>
+      </div>
+    `;
   }
 
-  document.getElementById("next-button").style.display = "inline-block";
+  document.getElementById("next-button").style.display =
+    "inline-block";
 }
+
 
 function nextQuestion() {
   currentQuestion++;
@@ -533,43 +751,73 @@ function nextQuestion() {
   }
 }
 
+
 function showResults() {
   const content = document.getElementById("content");
 
-  let message = "";
+  const percentage = Math.round(
+    (score / questions.length) * 100
+  );
 
-  if (score === questions.length) {
+  let message = "";
+  let icon = "";
+
+  if (percentage === 100) {
     message = "¡Excelente! Dominas la robótica ambiental.";
-  } else if (score >= 3) {
-    message = "¡Muy bien! Continúa aprendiendo.";
+    icon = "🏆";
+  } else if (percentage >= 60) {
+    message = "¡Buen trabajo! Tienes conocimientos sobre robótica ambiental.";
+    icon = "🌱";
   } else {
-    message = "Sigue explorando EcoBotTerra para aprender más.";
+    message = "¡Sigue aprendiendo! Cada respuesta es una oportunidad para mejorar.";
+    icon = "📚";
   }
 
   content.innerHTML = `
-    <h2>🏆 RESULTADOS ECOQUIZ</h2>
+    <div class="quiz-final">
 
-    <div class="robot-info">
-      <h3>Tu puntuación:</h3>
-      <p style="font-size:35px;color:#39ff14">
-        ${score} / ${questions.length}
+      <div class="quiz-final-icon">
+        ${icon}
+      </div>
+
+      <span class="statistics-tag">
+        ECOQUIZ COMPLETADO
+      </span>
+
+      <h2>¡HAS TERMINADO!</h2>
+
+      <div class="quiz-score-circle">
+        <span>${percentage}%</span>
+      </div>
+
+      <h3>${score} de ${questions.length} respuestas correctas</h3>
+
+      <p class="quiz-final-message">
+        ${message}
       </p>
-      <p>${message}</p>
+
+      <div class="quiz-final-info">
+        <p>
+          La robótica puede contribuir al cuidado
+          del medioambiente cuando se utiliza
+          de manera responsable.
+        </p>
+      </div>
+
+      <button class="main-button" onclick="startQuiz()">
+        ↻ VOLVER A JUGAR
+      </button>
+
+      <button class="back-button" onclick="showHome()">
+        ← VOLVER AL INICIO
+      </button>
+
     </div>
-
-    <button class="main-button"
-      onclick="startQuiz()">
-      VOLVER A JUGAR
-    </button>
-
-    <button class="back-button"
-      onclick="showHome()">
-      ← VOLVER AL INICIO
-    </button>
   `;
 
   window.scrollTo(0, 0);
 }
+
 </script>
 
 </body>
